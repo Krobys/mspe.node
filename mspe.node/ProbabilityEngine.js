@@ -298,7 +298,7 @@ function calculate(message) {
                 if (pe.finalSolutionsCount == 0) {
                     throw new Error("Position is not logically consistent");
                 } else {
-                    offEdgeSafety = pe.offEdgeProbability.toFixed(6);
+                    offEdgeSafety = Number(pe.offEdgeProbability.toFixed(2));
 
                     // tiles without a calculated safety must be off the edge, so set to the off edge safety.  Known Mines were set to safety zero earlier.
                     for (let tile of coveredTiles) {
@@ -2064,7 +2064,7 @@ class ProbabilityEngine {
                     this.localClears.push(...box.tiles);
 
                 } else {  // neither mine nor safe
-                    box.safety = (1 - functions.divideBigInt(tally[i], totalTally, 6)).toFixed(6);
+                    box.safety = Number((1 - functions.divideBigInt(tally[i], totalTally, 6)).toFixed(2));
 
                 }
 
